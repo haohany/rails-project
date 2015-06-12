@@ -1,11 +1,9 @@
-<h1 class="text-center">Ruby on Rails Portal with Recommendations Algorithm</h1>
-
 <% if not logged_in? %>
   <div class="text-center">
     <%= link_to "Log in", login_path, class: "btn btn-primary btn-lg" %>
   </div>
 <% else %>
-  <h2 class="text-center">
+  <h2>
     Welcome, <%= current_admin.username %>
     <small><%= link_to "log out", logout_path, method: "delete" %></small>
   </h2>
@@ -21,7 +19,7 @@
 
     <% @item_users.each do |item_user| %>
       <tr>
-        <td><%= item_user.user.name %></td>
+        <td><%= link_to item_user.user.name, user_path(item_user.user) %></td>
         <td><%= item_user.item.name %></td>
         <td><%= item_user.item.categories.map { |category| category.name }.join(", ") %></td>
       </tr>
