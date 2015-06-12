@@ -14,6 +14,6 @@ password: *admin*
 * `rails c` open rails console, `Admin.create(username: 'admin', password: 'admin')` create an Admin user to log in, then `exit`
 * `rails s` start server
 
-##ToDo
+##TODO
 * Create tests
 * ~~N+1 queries issue~~
