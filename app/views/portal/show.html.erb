@@ -1,0 +1,31 @@
+<h1 class="text-center">Ruby on Rails Portal with Recommendations Algorithm</h1>
+
+<% if not logged_in? %>
+  <div class="text-center">
+    <%= link_to "Log in", login_path, class: "btn btn-primary btn-lg" %>
+  </div>
+<% else %>
+  <h2 class="text-center">
+    Welcome, <%= current_admin.username %>
+    <small><%= link_to "log out", logout_path, method: "delete" %></small>
+  </h2>
+
+  <%= will_paginate @item_users, class: "text-center" %>
+
+  <table class="table">
+    <tr>
+      <th>User</th>
+      <th>Item Purchased</th>
+      <th>Item Category</th>
+    </tr>
+
+    <% @item_users.each do |item_user| %>
+      <tr>
+        <td><%= item_user.user.name %></td>
+        <td><%= item_user.item.name %></td>
+        <td><%= item_user.item.categories.map { |category| category.name }.join(", ") %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
