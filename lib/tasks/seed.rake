@@ -11,7 +11,11 @@ namespace :seed do
     puts "Start seeding data from #{file} to users table"
 
     CSV.foreach(file, options) do |row|
-      User.create!(id: row['user_id'], name: row['name'])
+      begin
+        User.create!(id: row['user_id'], name: row['name'])
+      rescue ActiveRecord::ActiveRecordError => e
+        puts e
+      end
     end
   end
 
@@ -20,7 +24,11 @@ namespace :seed do
     puts "Start seeding data from #{file} to items table"
 
     CSV.foreach(file, options) do |row|
-      Item.create!(id: row['item_id'], name: row['name'])
+      begin
+        Item.create!(id: row['item_id'], name: row['name'])
+      rescue ActiveRecord::ActiveRecordError => e
+        puts e
+      end
     end
   end
 
@@ -29,7 +37,11 @@ namespace :seed do
     puts "Start seeding data from #{file} to categories table"
 
     CSV.foreach(file, options) do |row|
-      Category.create!(id: row['category_id'], name: row['name'])
+      begin
+        Category.create!(id: row['category_id'], name: row['name'])
+      rescue ActiveRecord::ActiveRecordError => e
+        puts e
+      end
     end
   end
 
@@ -38,7 +50,11 @@ namespace :seed do
     puts "Start seeding data from #{file} to category_items table"
 
     CSV.foreach(file, options) do |row|
-      CategoryItem.create!(category_id: row['category_id'], item_id: row['item_id'])
+      begin
+        CategoryItem.create!(category_id: row['category_id'], item_id: row['item_id'])
+      rescue ActiveRecord::ActiveRecordError => e
+        puts e
+      end
     end
   end
 
@@ -47,7 +63,11 @@ namespace :seed do
     puts "Start seeding data from #{file} to item_users table"
 
     CSV.foreach(file, options) do |row|
-      ItemUser.create!(user_id: row['user_id'], item_id: row['item_id'])
+      begin
+        ItemUser.create!(user_id: row['user_id'], item_id: row['item_id'])
+      rescue ActiveRecord::ActiveRecordError => e
+        puts e
+      end
     end
   end
 
