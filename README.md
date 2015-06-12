@@ -1,25 +1,19 @@
-== README
+##Demo
+https://rails-haohan.herokuapp.com
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+username: *admin*
 
-Things you may want to cover:
+password: *admin*
 
-* Ruby version
+##Local Set Up
+* `git clone https://github.com/haohany/rails-project.git`
+* `cd rails-project`
+* `bundle install --without production`
+* `rake db:migrate`
+* `rake seed:all`
+* `rails c` open rails console, `Admin.create(username: 'admin', password: 'admin')` create an Admin user to log in, then `exit`
+* `rails s` start server
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
+##TODO
+* Create tests
+* ~~N+1 queries issue~~
